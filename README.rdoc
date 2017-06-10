@@ -1,28 +1,39 @@
-== README
+Simple-Chat
+=============
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+**Description**
 
-Things you may want to cover:
+    - A basic chat application with mysql2 database
+    - Users signup/login
+    - Start chatting with others
 
-* Ruby version
+**Features**
 
-* System dependencies
+    - Written in ruby on rails
+    - ruby version : 2.3.3
+    - rails version : 4.2.8
+    - mysql2
+    
+**Installation**
 
-* Configuration
+    - Download or clone project to this dir
+    - Open terminal on app root
+    - Run `rake db:migrate`
+    - Run `bundle install`
+    - Run `rackup faye.ru -E production -s thin` and keep it running
+    - open another terminal and run `rails s`
+    - Enjoy :)
 
-* Database creation
+**Libraries and frameworks**
 
-* Database initialization
+    - ruby on rails framework : http://rubyonrails.org
+    - faye : https://faye.jcoglan.com/
+    - mysql2 : https://github.com/brianmario/mysql2
 
-* How to run the test suite
+**Contacts**
 
-* Services (job queues, cache servers, search engines, etc.)
+    - E-Mail: yasser.alaaeldin1995@gmail.com
 
-* Deployment instructions
+**License**
 
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+MIT
