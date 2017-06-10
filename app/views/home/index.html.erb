@@ -1,0 +1,89 @@
+<script>
+    $(function() {
+        // Create a new client to connect to Faye
+        var client = new Faye.Client('http://localhost:9292/faye');
+
+        var all = <%= raw @arrtest.to_json %>;
+        var arr = [];
+        // Subscribe to the public channel
+        var public_subscription = client.subscribe('/messages/public', function(data) {
+            //$('<p></p>').html(data.username + ": " + data.msg).appendTo('#chat_room');
+            $('#chat_room').append('<div class="row message-bubble"><p class="text-muted">'
+                +'<strong>'+data.username+'</strong>'+' '+new Date()+'</p><p>'+data.msg+'</p></div>');
+
+        });
+
+        // Our own private channel
+        var private_subscription = client.subscribe('/messages/private/<%= session[:username] %>', function(data) {
+            $('<p></p>').addClass('private').html(data.username + ": " + data.msg).appendTo('#chat_room');
+
+        });
+
+        // Handle form submission to publish messages.
+        $('#new_message_form').submit(function(){
+            // Is it a private message?
+            if (matches = $('#message').val().match(/@(.+) (.+)/)) {
+                client.publish('/messages/private/' + matches[1], {
+                    username: '<%= session[:username] %>',
+                    msg: matches[2]
+                });
+                console.log(matches);
+            }
+            else {
+                // It's a public message
+                client.publish('/messages/public', {
+                    username: '<%= session[:username] %>',
+                    msg: $('#message').val()
+                });
+            }
+
+            // Clear the message box
+            $('#message').val('');
+
+            return false;
+        });
+    });
+</script>
+
+<div class="container">
+  <div class="row  col-md-8">
+    <% if session[:user_id] != nil %>
+        <%= link_to("Logout", {:controller => 'authenticate',:action => 'logout'}, :class => 'action new') %>
+    <% else %>
+        <%= link_to("Signup/Login", {:controller => 'authenticate',:action => 'signup'}, :class => 'action new') %>
+    <% end %>
+  </div>
+  <div class="row col-md-8">
+    <div class="panel panel-default">
+      <div class="panel-heading">Simple Chat</div>
+      <div class="panel-body scroll">
+        <div id="chat_room" class="container" style="width: 100%;" >
+
+        </div>
+        <div class="panel-footer">
+          <% if session[:user_id] != nil %>
+          <form class="input-group" id="new_message_form">
+            <input class="form-control" type="text" id="message" name="message">
+            <span class="input-group-btn">
+              <input class="btn btn-default" type="submit" value="Send">
+            </span>
+          </form>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row  col-md-1"></div>
+  <div class="row  col-md-3">
+    <div class="panel panel-default">
+      <div class="panel-heading">Users</div>
+      <div class="panel-body scroll">
+        <div class="container" style="width: 100%;" >
+          <% @allusers.each do |user| %>
+             <p> <%= user.username %></p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,42 @@
+<% @page_title = "Sign Up" %>
+
+<div class="login">
+  <%= form_tag(:action => 'login') do %>
+      <table>
+        <tr>
+          <td><%= label_tag(:username) %></td>
+          <td><%= text_field_tag(:username) %></td>
+        </tr>
+        <tr>
+          <td><%= label_tag(:password) %></td>
+          <td><%= password_field_tag(:password) %></td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td><%= submit_tag("Login") %></td>
+        </tr>
+      </table>
+  <% end %>
+  <hr>
+  <%= form_tag(:action => 'signup') do %>
+      <table>
+        <tr>
+          <td><%= label_tag(:username) %></td>
+          <td><%= text_field_tag(:username) %></td>
+        </tr>
+        <tr>
+          <td><%= label_tag(:password) %></td>
+          <td><%= password_field_tag(:password) %></td>
+        </tr>
+        <tr>
+          <td>Write password again</td>
+          <td><%= password_field_tag(:repassword) %></td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td><%= submit_tag("Sign up") %></td>
+        </tr>
+      </table>
+  <% end %>
+  <%= @testt %>
+</div>

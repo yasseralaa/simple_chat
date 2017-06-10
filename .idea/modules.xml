@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../SitepointMiniChat-comments_polling/.idea/SitepointMiniChat-comments_polling.iml" filepath="$PROJECT_DIR$/../SitepointMiniChat-comments_polling/.idea/SitepointMiniChat-comments_polling.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../chat/.idea/chat.iml" filepath="$PROJECT_DIR$/../chat/.idea/chat.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../faye-rails-demo-master/.idea/faye-rails-demo-master.iml" filepath="$PROJECT_DIR$/../faye-rails-demo-master/.idea/faye-rails-demo-master.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/simple_chat.iml" filepath="$PROJECT_DIR$/.idea/simple_chat.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../simple_cms/.idea/simple_cms.iml" filepath="$PROJECT_DIR$/../simple_cms/.idea/simple_cms.iml" />
+    </modules>
+  </component>
+</project>
